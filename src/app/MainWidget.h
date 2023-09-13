@@ -2,18 +2,21 @@
 
 #include <QWidget>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWidget; }
-QT_END_NAMESPACE
+namespace Ui {
+class MainWidget;
+}
+
+class MainWidgetPrivate;
 
 class MainWidget : public QWidget
 {
     Q_OBJECT
+    Q_DECLARE_PRIVATE(MainWidget)
 
 public:
     MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
 
 private:
-    QScopedPointer<Ui::MainWidget> ui;
+    QScopedPointer<MainWidgetPrivate> d_ptr;
 };

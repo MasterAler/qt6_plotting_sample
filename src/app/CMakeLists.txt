@@ -5,6 +5,8 @@ qt_add_executable (qt6_plotting_sample
     MainWidget.cpp
     MainWidget.h
     MainWidget.ui
+    DataGenerator.h
+    DataGenerator.cpp
 )
 
 set_target_properties(qt6_plotting_sample PROPERTIES
