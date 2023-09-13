@@ -32,9 +32,15 @@ public:
             m_dataGenerator->setEnabled(checked);
         });
 
-        QObject::connect(m_dataGenerator.data(), &DataGenerator::newDataPoint, [](const QPointF& point){
-            qDebug() << point.x() << " " << point.y();
+        QObject::connect(ui->resetPushButton, &QAbstractButton::clicked, [this]{
+            bool wasEnabled = m_dataGenerator->isEnabled();
+            m_dataGenerator->setEnabled(false);
+            m_dataGenerator->clearTicks();
+            ui->plotWidget->clear();
+            m_dataGenerator->setEnabled(wasEnabled);
         });
+
+        QObject::connect(m_dataGenerator.data(), &DataGenerator::newDataPoint, ui->plotWidget, &PlotWidget::onNewDataPoint, Qt::QueuedConnection);
     }
 };
 

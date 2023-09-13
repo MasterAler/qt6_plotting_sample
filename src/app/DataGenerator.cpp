@@ -20,9 +20,19 @@ DataGenerator::~DataGenerator()
     m_workerThread->wait();
 }
 
+bool DataGenerator::isEnabled() const
+{
+    return m_isWorking;
+}
+
 void DataGenerator::setEnabled(bool enabled)
 {
     m_isWorking = enabled;
+}
+
+void DataGenerator::clearTicks()
+{
+    m_tick = 0;
 }
 
 void DataGenerator::doGeneration()
@@ -30,7 +40,7 @@ void DataGenerator::doGeneration()
     while (!m_needStop) {
         QThread::msleep(m_frequency);
         if (m_isWorking) {
-            emit newDataPoint({1. * (rand() % m_range), 1. * (rand() % m_range)});
+            emit newDataPoint({1. * ++m_tick, 1. * (rand() % m_range)});
         }
     }
 }
