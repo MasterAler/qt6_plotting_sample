@@ -9,7 +9,5 @@ MainWidget::MainWidget(QWidget *parent)
 }
 
 MainWidget::~MainWidget()
-{
-    delete ui;
-}
+{ }
 

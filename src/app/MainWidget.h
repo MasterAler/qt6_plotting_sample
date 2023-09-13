@@ -1,5 +1,4 @@
-#ifndef MAINWIDGET_H
-#define MAINWIDGET_H
+#pragma once
 
 #include <QWidget>
 
@@ -16,6 +15,5 @@ public:
     ~MainWidget();
 
 private:
-    Ui::MainWidget *ui;
+    QScopedPointer<Ui::MainWidget> ui;
 };
-#endif // MAINWIDGET_H
