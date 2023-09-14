@@ -17,8 +17,15 @@ PlotWidget::PlotWidget(QWidget *parent)
     m_defaultChartView->setRenderHint(QPainter::Antialiasing);
 }
 
+const QPair<qreal, qreal> &PlotWidget::getStats() const
+{
+    return m_currentStats;
+}
+
 void PlotWidget::onNewDataPoint(const QPointF &point)
 {
+    // I didn't check is there's a nicer way
+    // Good enough to work
     m_defaultChartView->chart()->removeSeries(m_defaultLineSeries);
     m_defaultLineSeries->append(point);
     m_defaultChartView->chart()->addSeries(m_defaultLineSeries);

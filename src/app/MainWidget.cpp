@@ -40,11 +40,17 @@ public:
             m_dataGenerator->setEnabled(wasEnabled);
         });
 
+        QObject::connect(ui->savePushButton, &QAbstractButton::clicked, [this]{
+            ui->resultsWidget->addResult(ui->plotWidget->getStats());
+        });
+
+        QObject::connect(ui->clearPushButton, &QAbstractButton::clicked, ui->resultsWidget, &ResultsWidget::clear);
+
         QObject::connect(m_dataGenerator.data(), &DataGenerator::newDataPoint, ui->plotWidget, &PlotWidget::onNewDataPoint, Qt::QueuedConnection);
     }
 };
 
-// ------------------------------------------------
+// -------------------------------------------------------------------------------------
 
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)

@@ -8,6 +8,10 @@ class MainWidget;
 
 class MainWidgetPrivate;
 
+/*!
+ * \brief The MainWidget class
+ * is our main window, we use it to configure GUI
+ */
 class MainWidget : public QWidget
 {
     Q_OBJECT
