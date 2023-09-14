@@ -1,21 +1,26 @@
-#ifndef MAINWIDGET_H
-#define MAINWIDGET_H
+#pragma once
 
 #include <QWidget>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWidget; }
-QT_END_NAMESPACE
+namespace Ui {
+class MainWidget;
+}
 
+class MainWidgetPrivate;
+
+/*!
+ * \brief The MainWidget class
+ * is our main window, we use it to configure GUI
+ */
 class MainWidget : public QWidget
 {
     Q_OBJECT
+    Q_DECLARE_PRIVATE(MainWidget)
 
 public:
     MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
 
 private:
-    Ui::MainWidget *ui;
+    QScopedPointer<MainWidgetPrivate> d_ptr;
 };
-#endif // MAINWIDGET_H

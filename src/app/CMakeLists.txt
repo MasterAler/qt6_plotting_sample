@@ -5,6 +5,12 @@ qt_add_executable (qt6_plotting_sample
     MainWidget.cpp
     MainWidget.h
     MainWidget.ui
+    DataGenerator.h
+    DataGenerator.cpp
+    PlotWidget.h
+    PlotWidget.cpp
+    ResultsWidget.h
+    ResultsWidget.cpp
 )
 
 set_target_properties(qt6_plotting_sample PROPERTIES
@@ -12,4 +18,4 @@ set_target_properties(qt6_plotting_sample PROPERTIES
     MACOSX_BUNDLE ON
 )
 
-target_link_libraries(qt6_plotting_sample PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(qt6_plotting_sample PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Charts)
